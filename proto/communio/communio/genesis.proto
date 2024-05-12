@@ -1,0 +1,17 @@
+syntax = "proto3";
+package communio.communio;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "communio/communio/params.proto";
+
+option go_package = "github.com/parvuli/communio/x/communio/types";
+
+// GenesisState defines the communio module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
