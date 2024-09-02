@@ -3,7 +3,7 @@ resource "aws_instance" "explorer" {
   ami                         = "ami-0d70546e43a941d70"
   instance_type               = "t2.medium"
   subnet_id                   = aws_subnet.explorer.id
-  key_name                    = "communio-key"
+  key_name                    = "communio-key.${var.env}"
   vpc_security_group_ids      = [aws_security_group.explorer.id]
   associate_public_ip_address = false
 

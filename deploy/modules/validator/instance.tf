@@ -3,7 +3,7 @@ resource "aws_instance" "validator" {
   ami                         = var.ami
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.validator.id
-  key_name                    = "communio-key"
+  key_name                    = "communio-key.${var.env}"
   vpc_security_group_ids      = [aws_security_group.validator.id]
   associate_public_ip_address = false
 
