@@ -3,7 +3,7 @@ resource "aws_instance" "seed" {
 
   count                       = var.num_instances
   ami                         = var.ami
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.seed.id
   key_name                    = "communio-key.${var.env}"
   vpc_security_group_ids      = [aws_security_group.seed.id]
@@ -103,7 +103,7 @@ resource "null_resource" "configure_client" {
     inline = [
       "echo configuring seed node...",
       "chmod +x upload/*.sh ./upload/communiod",
-      "~/upload/configure-generic-client.sh",
+      "~/upload/configure-generic-client.sh '${var.console_password}'",
       "~/upload/install-generic-cert.sh ${var.tls_certificate_email} seed-${count.index}-rpc.${var.dns_zone_name}",
       "~/upload/install-nginx-cert.sh ${var.tls_certificate_email} seed-${count.index}-api.${var.dns_zone_name} 1317",
       "~/upload/configure-seed.sh ${var.env} ${count.index} '${join(",", [for node in aws_eip.seed : node.public_ip])}' '${join(",", var.validator_ips)}' ${var.token_name}"

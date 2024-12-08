@@ -21,13 +21,13 @@ variable "project" {
 
 variable "ssh_private_key_path" {
   description = "path to private SSH key file"
-  default     = "~/.ssh/id_rsa"
+  default     = "~/.ssh/id_rsa.old"
   type        = string
 }
 
 variable "ssh_public_key_path" {
   description = "path to public SSH key file"
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "~/.ssh/id_rsa.old.pub"
   type        = string
 }
 
@@ -80,6 +80,10 @@ variable "dns_zone_parent" {
 
 variable "validator_keys_passphrase" {
   description = "passphrase for validator keys"
+}
+
+variable "console_password" {
+  description = "password for the user 'ubuntu'"
 }
 
 variable "token_name" {
