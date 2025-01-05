@@ -3,8 +3,8 @@ WORKDIR /communio
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y ca-certificates git make wget build-essential
 
-RUN wget https://dl.google.com/go/go1.21.9.linux-amd64.tar.gz
-RUN tar -C /usr/local -xzf go1.21.9.linux-amd64.tar.gz
+RUN wget https://dl.google.com/go/go1.23.4.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
 
 COPY go.mod go.sum ./

@@ -1,6 +1,6 @@
 module github.com/parvuli/communio
 
-go 1.21
+go 1.23.4
 
 replace (
 	// fix upstream GHSA-h395-qcrw-5vmq vulnerability.
