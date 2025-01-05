@@ -4,6 +4,7 @@ resource "aws_instance" "seed" {
   count                       = var.num_instances
   ami                         = var.ami
   instance_type               = "t3.micro"
+  monitoring                  = true
   subnet_id                   = aws_subnet.seed.id
   key_name                    = "communio-key.${var.env}"
   vpc_security_group_ids      = [aws_security_group.seed.id]
@@ -12,6 +13,7 @@ resource "aws_instance" "seed" {
   lifecycle {
     ignore_changes = [associate_public_ip_address]
   }
+
 
   tags = {
     Environment = var.env

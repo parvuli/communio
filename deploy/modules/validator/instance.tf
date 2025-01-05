@@ -2,6 +2,7 @@ resource "aws_instance" "validator" {
   count                       = var.num_instances
   ami                         = var.ami
   instance_type               = "t3.micro"
+  monitoring                  = true
   subnet_id                   = aws_subnet.validator.id
   key_name                    = "communio-key.${var.env}"
   vpc_security_group_ids      = [aws_security_group.validator.id]
